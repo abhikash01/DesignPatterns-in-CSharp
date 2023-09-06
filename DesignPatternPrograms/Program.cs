@@ -132,11 +132,77 @@ namespace DesignPatternPrograms
                 grilledCheeseSandwitch.DisplayIngrediants();
             }
 
+            static void prototypeShallowCopy()
+            {
+                Console.WriteLine("Shallow Copy Sample");
+                AuthorForShallowCopy authorForShallowCopy = new AuthorForShallowCopy()
+                {
+                    Name = "Abhishek P",
+                    TwitterAccount = "http://twitter.com/abhp",
+                    Website = "abhishekprasad.com",
+                    HomeAddress = new AddressType1
+                    {
+                        City = "Mumbai",
+                        State = "Maharastra"
+                    }
+                };
+
+                Console.WriteLine("Original Copy: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(authorForShallowCopy));
+                AuthorForShallowCopy clonedObject = (AuthorForShallowCopy)authorForShallowCopy.Clone();
+                Console.WriteLine("Cloned Copy: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(clonedObject));
+                Console.WriteLine("Making Changes to cloned copy: ");
+                clonedObject.Name = "Dheeraj Kumar";
+                clonedObject.Website = "dheerajkumar.com";
+                clonedObject.TwitterAccount = "http://twitter.com/dhk";
+                clonedObject.HomeAddress.State = "Karnataka";
+                clonedObject.HomeAddress.City = "Bengaluru";
+                Console.WriteLine("Cloned Object: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(clonedObject));
+                Console.WriteLine("Original Copy: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(authorForShallowCopy));
+            }
+
+            static void prototypeDeepCopy()
+            {
+                Console.WriteLine("Deep Copy Sample");
+                AuthorForDeepCopy authorForDeepCopy = new AuthorForDeepCopy()
+                {
+                    Name = "Abhishek P",
+                    TwitterAccount = "http://twitter.com/abhp",
+                    Website = "abhishekprasad.com",
+                    HomeAddress = new AddressType2
+                    {
+                        City = "Mumbai",
+                        State = "Maharastra"
+                    }
+                };
+
+                Console.WriteLine("Original Copy: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(authorForDeepCopy));
+                AuthorForDeepCopy clonedObject = (AuthorForDeepCopy)authorForDeepCopy.Clone();
+                Console.WriteLine("Cloned Copy: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(clonedObject));
+                Console.WriteLine("Making Changes to cloned copy: ");
+                clonedObject.Name = "Dheeraj Kumar";
+                clonedObject.Website = "dheerajkumar.com";
+                clonedObject.TwitterAccount = "http://twitter.com/dhk";
+                clonedObject.HomeAddress.State = "Karnataka";
+                clonedObject.HomeAddress.City = "Bengaluru";
+                Console.WriteLine("Cloned Object: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(clonedObject));
+                Console.WriteLine("Original Copy: ");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(authorForDeepCopy));
+            }
+
             //abstractfactory1();
-            abstractfactory2();
+            //abstractfactory2();
             //builderPattern1();
             //builderPattern2();
             // factorymethod();
+            //prototypeShallowCopy();
+            prototypeDeepCopy();
 
         }
 
