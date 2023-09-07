@@ -196,13 +196,72 @@ namespace DesignPatternPrograms
                 Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(authorForDeepCopy));
             }
 
+            static void singleton()
+            {
+                // Singleton class uses the static property to return an instance of the class
+                // You must use the Instance property to get its object.
+                Singleton1 s1a = Singleton1.Instance;
+                Singleton1 s1b = Singleton1.Instance;
+                // s1a and s1b are the same instances. However, the above Singleton class is not thread-safe. 
+                if (s1a == s1b)
+                {
+                    Console.WriteLine("Singleton works, both variables contain the same instance.");
+                }
+                else
+                {
+                    Console.WriteLine("Singleton failed, variables contain different instances.");
+                }
+
+                Singleton2 s2a = Singleton2.Instance;
+                Singleton2 s2b = Singleton2.Instance;
+                if (s2a == s2b)
+                {
+                    Console.WriteLine("Singleton works, both variables contain the same instance.");
+                }
+                else
+                {
+                    Console.WriteLine("Singleton failed, variables contain different instances.");
+                }
+                Singleton3 s3a = Singleton3.Instance;
+                Singleton3 s3b = Singleton3.Instance;
+                if (s3a == s3b)
+                {
+                    Console.WriteLine("Singleton works, both variables contain the same instance.");
+                }
+                else
+                {
+                    Console.WriteLine("Singleton failed, variables contain different instances.");
+                }
+                Singleton4 s4a = Singleton4.Instance;
+                Singleton4 s4b = Singleton4.Instance;
+                if (s4a == s4b)
+                {
+                    Console.WriteLine("Singleton works, both variables contain the same instance.");
+                }
+                else
+                {
+                    Console.WriteLine("Singleton failed, variables contain different instances.");
+                }
+                Singleton5 s5a = Singleton5.Instance;
+                Singleton5 s5b = Singleton5.Instance;
+                if (s5a == s5b)
+                {
+                    Console.WriteLine("Singleton works, both variables contain the same instance.");
+                }
+                else
+                {
+                    Console.WriteLine("Singleton failed, variables contain different instances.");
+                }
+            }
+
             //abstractfactory1();
             //abstractfactory2();
             //builderPattern1();
             //builderPattern2();
             // factorymethod();
             //prototypeShallowCopy();
-            prototypeDeepCopy();
+            //prototypeDeepCopy();
+            singleton();
 
         }
 
