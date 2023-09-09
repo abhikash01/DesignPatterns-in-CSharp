@@ -1,4 +1,5 @@
 ﻿using CreationalPatterns;
+using StructuralPatterns;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -254,6 +255,78 @@ namespace DesignPatternPrograms
                 }
             }
 
+
+            // Structural Patterns 
+            static void adapterPattern1()
+            {
+                // Non Adapted Chemical Compund
+                Compound unknown = new Compound();
+                unknown.Display();
+
+                // Adapted Chemical Compunds
+                Compound water = new RichCompund("water");
+                water.Display();
+
+                Compound benzene = new RichCompund("benzene");
+                benzene.Display();
+
+                Compound ethanol = new RichCompund("ethanol");
+                ethanol.Display();
+
+                // Wait for User
+                Console.ReadKey();
+
+            }
+            static void adapterPattern2()
+            {
+                ITarget iTarget = new EmployerAdapter();
+                ThirdPartyBilling client = new ThirdPartyBilling(iTarget);
+                client.ShowEmployeeList();
+                Console.ReadKey();
+
+            }
+            static void bridgePattern()
+            {
+                SendData _sendData = new SendEmail();
+
+                // Set Webservice as reference for sending Email
+                _sendData._iBridgeComponent = new WebService();
+                _sendData.Send();
+
+                // Set ThirdParty API as reference for sending Email
+                _sendData._iBridgeComponent = new ThirdPartyAPI();
+                _sendData.Send();
+
+                _sendData = new SendSMS();
+
+                // Set Webservice as reference for sending SMS
+                _sendData._iBridgeComponent = new WebService();
+                _sendData.Send();
+
+                // Set Thirdparty API as reference for sending SMS
+                _sendData._iBridgeComponent = new ThirdPartyAPI();
+                _sendData.Send();
+                
+            }
+
+            static void compositePattern()
+            {
+                // Creating Tree Structure
+                Composite root = new Composite(100); // Root
+                Composite com1 = new Composite(200); // Composite 1
+                Leaf l1 = new Leaf(20);
+                Leaf l2 = new Leaf(10);
+
+                // Add two leafs to the Composite
+                com1.AddChild(l1);
+                com1.AddChild(l2);
+                Leaf l3 = new Leaf(25); // Leaf 3
+                root.AddChild(com1); // Add Composite 1 to Root
+                root.AddChild(l3); // Add Leaf 3 directly to Root
+                root.Traverse();
+            }
+
+            //Creational Patterns 
             //abstractfactory1();
             //abstractfactory2();
             //builderPattern1();
@@ -261,7 +334,15 @@ namespace DesignPatternPrograms
             // factorymethod();
             //prototypeShallowCopy();
             //prototypeDeepCopy();
-            singleton();
+            //singleton();
+
+            // Structural Patterns 
+            // adapterPattern1();
+            // adapterPattern2();
+            //bridgePattern();
+            compositePattern();
+           
+
 
         }
 
