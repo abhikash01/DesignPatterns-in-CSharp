@@ -326,6 +326,21 @@ namespace DesignPatternPrograms
                 root.Traverse();
             }
 
+            static void decoratorPattern()
+            {
+                // Create Economy Car Instance 
+                ICar objCar = new EconomyCar();
+
+                // Wrap Economy instance with Basic Accessories 
+                CarAccessoriesDecorator objAccessoriesDecorator = new BasicAccessories(objCar);
+
+                // Wrap Economy instance with Advanced Accessories
+                objAccessoriesDecorator = new AdvancedAccessories(objAccessoriesDecorator);
+
+                Console.WriteLine("Car details: " + objAccessoriesDecorator.GetDescription());
+                Console.WriteLine("Total Price:  " + objAccessoriesDecorator.GetCost());
+            }
+
             //Creational Patterns 
             //abstractfactory1();
             //abstractfactory2();
@@ -340,7 +355,8 @@ namespace DesignPatternPrograms
             // adapterPattern1();
             // adapterPattern2();
             //bridgePattern();
-            compositePattern();
+            // compositePattern();
+            decoratorPattern();
            
 
 
