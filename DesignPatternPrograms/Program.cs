@@ -341,6 +341,17 @@ namespace DesignPatternPrograms
                 Console.WriteLine("Total Price:  " + objAccessoriesDecorator.GetCost());
             }
 
+            static void facadePattern()
+            {
+                Console.WriteLine("----Client Orders for Pizza----");
+                var facadeForClient = new RestaurantFacade();
+                facadeForClient.GetNonVegPizza();
+                facadeForClient.GetVegPizza();
+                Console.WriteLine("----Client Orders for Bread----");
+                facadeForClient.GetCheesyGarlicBread();
+                facadeForClient.GetGarlicBread();
+            }
+
             //Creational Patterns 
             //abstractfactory1();
             //abstractfactory2();
@@ -356,7 +367,8 @@ namespace DesignPatternPrograms
             // adapterPattern2();
             //bridgePattern();
             // compositePattern();
-            decoratorPattern();
+            // decoratorPattern();
+            facadePattern();
            
 
 
